@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shoppie — Premium Essentials</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span class="pill" id="brandName">Shoppie</span>
+            <small id="brandSubtitle" style="color:var(--muted)">• Premium Essentials</small>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input id="search" type="text" placeholder="Search products…" aria-label="Search products">
+        <select id="category" aria-label="Select category">
+          <option value="all">All Categories</option>
+        </select>
+        <select id="sort" aria-label="Sort products">
+          <option value="pop">Sort: Popular</option>
+          <option value="price-asc">Sort: Price ↑</option>
+          <option value="price-desc">Sort: Price ↓</option>
+        </select>
+        <select id="currency" aria-label="Select currency">
+          <option>USD</option><option>EUR</option><option>GBP</option><option>PKR</option>
+          <option>INR</option><option>CNY</option><option>JPY</option><option>AED</option>
+        </select>
+        <select id="lang" aria-label="Select language">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="zh">简体中文</option>
+          <option value="ja">日本語</option>
+          <option value="fr">Français</option>
+          <option value="ar">العربية</option>
+         union jack
+          <option value="de">Deutsch</option>
+          <option value="ru">Русский</option>
+        </select>
+        <button class="iconbtn" id="openCart" aria-label="Open shopping cart">🛒 <span id="openCartLabel">Cart</span> <span id="cartCount" class="pill" style="margin-left:6px">0</span></button>
+      </div>
+    </div>
+  </header>
+  <main class="container">
+    <section class="hero">
+      <div class="panel heroMain fadeIn">
+        <div class="heroArt"></div>
+        <h1 id="heroTitle">Discover Quality. Designed to Impress.</h1>
+        <p id="heroDesc" style="color:var(--muted);max-width:58ch">Shop curated essentials with fast shipping, easy returns, and premium support.</p>
+        <div class="cta">
+          <button class="btn" id="shopNow">Shop Now</button>
+          <button class="btn subtle" id="browse">Browse Categories</button>
+        </div>
+        <div class="countdown" aria-label="Offer countdown">
+          <div class="time"><div id="d">00</div><small id="lblDays">Days</small></div>
+          <div class="time"><div id="h">00</div><small id="lblHours">Hours</small></div>
+          <div class="time"><div id="m">00</div><small id="lblMins">Mins</small></div>
+          <div class="time"><div id="s">00</div><small id="lblSecs">Secs</small></div>
+          <span class="pill" style="align-self:center" id="saleLabel">SALE ENDS SOON</span>
+        </div>
+      </div>
+      <div class="panel fadeIn">
+        <strong id="newsletterTitle">Join our newsletter</strong>
+        <p id="newsletterDesc" style="color:var(--muted)">Exclusive discounts and early access.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <input type="email" id="email" placeholder="you@example.com" style="flex:1" aria-label="Enter email for newsletter">
+          <button class="btn" id="join">Join</button>
+        </div>
+        <div style="margin-top:10px; display:flex; gap:8px; align-items:center">
+          <span style="color:var(--muted)">💬</span>
+          <a id="chatLink" href="https://wa.me/0000000000" style="color:var(--accent);text-decoration:none" target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="cats" id="cats"></div>
+    </section>
+    <section>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+  <aside class="drawer" id="drawer" aria-label="Shopping cart drawer">
+    <header class="container" style="padding:12px 14px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong id="cartTitle">🛒 Your Cart</strong>
+        <button class="iconbtn" id="closeCart" aria-label="Close cart">✖</button>
+      </div>
+    </header>
+    <div class="content">
+      <div id="cartList"></div>
+      <div class="coupon">
+        <input type="text" id="coupon" placeholder="Coupon code (SAVE10)" aria-label="Enter coupon code">
+        <button class="iconbtn" id="applyCoupon" aria-label="Apply coupon">Apply</button>
+      </div>
+      <div class="total">
+        <span id="subtotalLabel">Subtotal</span>
+        <span id="subtotal">$0.00</span>
+      </div>
+      <div class="checkout-form" id="checkoutForm" style="display:none">
+        <label for="checkoutName">Full Name</label>
+        <input type="text" id="checkoutName" placeholder="John Doe" aria-label="Enter full name">
+        <div id="checkoutNameError" class="error"></div>
+        <label for="checkoutAddress">Shipping Address</label>
+        <input type="text" id="checkoutAddress" placeholder="123 Main St, City, Country" aria-label="Enter shipping address">
+        <div id="checkoutAddressError" class="error"></div>
+        <label for="checkoutPayment">Payment Method</label>
+        <select id="checkoutPayment" aria-label="Select payment method">
+          <option value="">Select payment method</option>
+          <option value="stripe">Stripe</option>
+          <option value="paypal">PayPal</option>
+          <option value="cod">Cash on Delivery</option>
+        </select>
+        <div id="checkoutPaymentError" class="error"></div>
+        <button class="btn" id="submitCheckout" aria-label="Complete purchase">Complete Purchase</button>
+      </div>
+      <button class="btn" style="width:100%;margin-top:10px" id="checkout" aria-label="Proceed to checkout">Proceed to Checkout</button>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details">
+    <button class="closeX" id="modalClose" aria-label="Close modal">✖</button>
+    <div class="body">
+      <div>
+        <div class="gallery"><img id="modalImg" alt="" style="width:100%;height:100%;object-fit:cover"/></div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+      <div>
+        <h2 id="modalTitle" style="margin:.2rem 0 0"></h2>
+        <div class="rating" style="color:#ffdf6d" id="modalRating" aria-label="Product rating">★★★★★</div>
+        <div class="meta">
+          <div style="color:var(--muted)"><span id="inStock">In stock</span> • <span id="modalSku"></span></div>
+          <div class="price" id="modalPrice">$0.00</div>
+        </div>
+        <div style="margin-top:8px">
+          <small id="labelColor" style="color:var(--muted)">Choose color</small>
+          <div class="variants" id="colorWrap"></div>
+        </div>
+        <div style="margin-top:8px">
+          <small id="labelSize" style="color:var(--muted)">Choose size</small>
+          <div class="variants" id="sizeWrap"></div>
+        </div>
+        <div class="actions">
+          <button class="btn" id="addToCart" aria-label="Add to cart"><span id="addToCartLabel">Add to Cart</span> ➕</button>
+          <button class="btn subtle" id="viewAll" aria-label="View all products">View All</button>
+        </div>
+        <p id="modalDesc" style="color:var(--muted);margin-top:10px"></p>
+      </div>
+    </div>
+  </div>
+  <button class="sticky-cart" id="stickyCart" aria-label="Open cart">
+    <span id="stickyCartLabel">🛒 Cart</span> <span id="stickyCartCount" class="pill">0</span>
+  </button>
+  <footer>
+    <small id="footerText">© <span id="yr"></span> Shoppie • All rights reserved.</small>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
